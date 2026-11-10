@@ -8,7 +8,7 @@ const api = axios.create({
 // 1. Interceptor de Requisição: Injeta automaticamente o token JWT usando o tokenService
 api.interceptors.request.use(
     (config) => {
-        const token = tokenService.getToken(); // Usa a chave correta (@AlziCrochê:token)
+        const token = tokenService.getToken(); // Usa a chave correta (@StreetCrown:token)
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         }
