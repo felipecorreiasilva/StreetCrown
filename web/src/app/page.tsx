@@ -45,7 +45,6 @@ export default function Home() {
             className="absolute inset-0 h-full w-full object-cover scale-y-130"
           >
             <source src="/background.mp4" type="video/mp4" />
-            Seu navegador não suporta vídeos em background.
           </video>
 
           {/* Camada de escurecimento suave (Overlay) para destacar o texto */}
@@ -78,37 +77,62 @@ export default function Home() {
         </section>
 
         {/* Segunda Seção: Fundo branco e altura de tela cheia */}
-        <section className="min-h-screen bg-white text-zinc-900 flex flex-col items-center justify-center px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-wide mb-6 text-zinc-900">
-              Coleção Exclusiva StreetCrown
-            </h2>
-            <p className="text-zinc-600 text-lg md:text-xl max-w-2xl mx-auto mb-8">
-              Conectando atitude urbana, conforto e autenticidade em cada peça. Prepare-se para elevar o seu estilo ao próximo nível.
-            </p>
-            {/* Aqui você pode adicionar os cards de produtos da sua loja */}
-            {loading ? (
-              <p className="text-zinc-500">Carregando produtos...</p>
-            ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                {products.map((product) => (
-                  <div key={product.id} className="bg-zinc-100 p-4 rounded-lg shadow-md">
-                    <img
-                      src={`${process.env.NEXT_PUBLIC_API_URL}${product.image_url}`}
-                      alt={product.name}
-                      className="w-full h-48 object-cover mb-4"
-                    />
-                    <h3 className="text-xl font-bold mb-2">{product.name}</h3>
-                    <p className="text-zinc-600 mb-4">{product.description}</p>
-                    <p className="text-2xl font-extrabold text-purple-500">
-                      R$ {Number(product.price).toFixed(2)}
-                    </p>
-                  </div>
-                ))}
+<section className="min-h-screen bg-white text-zinc-900 flex flex-col items-center justify-center px-4">
+  <div className="my-16 max-w-4xl mx-auto text-center w-full">
+    <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-wide mb-6 text-zinc-900">
+      Coleção Exclusiva StreetCrown
+    </h2>
+    <p className="text-zinc-600 text-lg md:text-xl max-w-2xl mx-auto mb-8">
+      Conectando atitude urbana, conforto e autenticidade em cada peça. Prepare-se para elevar o seu estilo ao próximo nível.
+    </p>
+
+    {loading ? (
+      <p className="text-zinc-500">Carregando produtos...</p>
+    ) : (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {products.map((product) => (
+          <div 
+            key={product.id} 
+            className="relative bg-zinc-100 border border-slate-300 p-4 rounded-lg shadow-md flex flex-col justify-between"
+          >
+            {/* Bloco Superior (Imagem, Categoria, Título e Descrição) */}
+            <div>
+              <div className="relative w-full">
+                <img
+                  src={`${process.env.NEXT_PUBLIC_API_URL}${product.image_url}`}
+                  alt={product.name}
+                  className="w-full h-48 object-cover mb-4 rounded"
+                />
+                {product.category && (
+                  <span className="absolute top-2 left-2 bg-black/70 backdrop-blur-md text-white text-xs font-semibold px-2.5 py-1 rounded-full">
+                    {product.category}
+                  </span>
+                )}
               </div>
-            )}
+              <h3 className="text-xl font-bold mb-2">{product.name}</h3>
+              <p className="text-zinc-600 mb-4 text-sm">{product.description}</p>
+            </div>
+
+            {/* Bloco Inferior (Preço e Botão fixados na base) */}
+            <div className="flex items-center justify-between pt-4 border-t border-slate-200 mt-auto">
+              <p className="text-xl md:text-2xl font-extrabold text-zinc-800">
+                R$ {Number(product.price).toFixed(2)}
+              </p>
+
+              <Link
+                href={`/products/${product.id}`}
+                className="bg-zinc-950 hover:bg-zinc-800 text-white font-semibold px-4 py-2 rounded-lg text-sm transition shadow-sm"
+              >
+                Ver Peça
+              </Link>
+            </div>
+
           </div>
-        </section>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
 
       </main>
 
