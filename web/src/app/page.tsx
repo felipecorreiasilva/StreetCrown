@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  
+
   useEffect(() => {
     // função para buscar produtos da API
     async function fetchProducts() {
@@ -29,13 +29,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
-      
+
       {/* Principal (Main) contendo as seções do site */}
       <main className="w-full">
-        
+
         {/* Primeira Seção: Hero com o vídeo de background */}
         <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
-          
+
           {/* Vídeo em Background */}
           <video
             autoPlay
@@ -53,7 +53,7 @@ export default function Home() {
 
           {/* Conteúdo da primeira seção (Fica por cima do vídeo) */}
           <div className="relative z-20 text-center px-4 max-w-4xl mx-auto flex flex-col items-center gap-6">
-            
+
             <img
               src="logo.png"
               alt="Logo"
@@ -94,14 +94,14 @@ export default function Home() {
                 {products.map((product) => (
                   <div key={product.id} className="bg-zinc-100 p-4 rounded-lg shadow-md">
                     <img
-                      src={product.image_url}
+                      src={`${process.env.NEXT_PUBLIC_API_URL}${product.image_url}`}
                       alt={product.name}
                       className="w-full h-48 object-cover mb-4"
                     />
                     <h3 className="text-xl font-bold mb-2">{product.name}</h3>
                     <p className="text-zinc-600 mb-4">{product.description}</p>
                     <p className="text-2xl font-extrabold text-purple-500">
-                      R$ {product.price.toFixed(2)}
+                      R$ {Number(product.price).toFixed(2)}
                     </p>
                   </div>
                 ))}

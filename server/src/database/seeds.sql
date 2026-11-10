@@ -33,14 +33,14 @@ INSERT INTO users (
     'Apartamento 312 Bloco C'
 );
 
--- Inserção de produtos iniciais para a StreetCrown com o caminho /upload/products/
+-- Inserção de produtos iniciais para a StreetCrown com o caminho /uploads/products/
 INSERT INTO products (name, category, description, price, image_url, is_available, weight, width, height, length) VALUES 
 (
     'Boné StreetCrown Velvet Blue', 
     'Acessórios', 
     'Boné aba curva confeccionado em veludo de alta qualidade, com bordado frontal exclusivo StreetCrown e regulagem traseira strapback.', 
     129.90, 
-    '/upload/products/bone-blue.png', 
+    '/uploads/products/bone-blue.png', 
     TRUE, 
     0.250, 18.00, 12.00, 22.00
 ),
@@ -49,7 +49,7 @@ INSERT INTO products (name, category, description, price, image_url, is_availabl
     'Acessórios', 
     'Boné aba curva em veludo premium na cor preta, com detalhes bordados em alta definição e acabamento interno reforçado.', 
     129.90, 
-    '/upload/products/bone-black.png', 
+    '/uploads/products/bone-black.png', 
     TRUE, 
     0.250, 18.00, 12.00, 22.00
 ),
@@ -58,7 +58,7 @@ INSERT INTO products (name, category, description, price, image_url, is_availabl
     'Acessórios', 
     'Edição limitada na cor vermelha. Estilo urbano marcante com toque aveludado e coroa estruturada.', 
     129.90, 
-    '/upload/products/bone-red.png', 
+    '/uploads/products/bone-red.png', 
     TRUE, 
     0.250, 18.00, 12.00, 22.00
 ),
@@ -67,7 +67,7 @@ INSERT INTO products (name, category, description, price, image_url, is_availabl
     'Vestuário', 
     'Camiseta modelagem oversized em algodão penteado 100% premium, gramatura pesada e estampa minimalista no peito.', 
     159.90, 
-    '/upload/products/camiseta-black.png', 
+    '/uploads/products/camiseta-black.png', 
     TRUE, 
     0.350, 25.00, 3.00, 35.00
 ),
@@ -76,7 +76,7 @@ INSERT INTO products (name, category, description, price, image_url, is_availabl
     'Vestuário', 
     'Conforto absoluto e atitude urbana. Modelagem streetwear ampla, gola canelada grossa e tecido de toque macio.', 
     159.90, 
-    '/upload/products/camiseta-red.png', 
+    '/uploads/products/camiseta-red.png', 
     TRUE, 
     0.350, 25.00, 3.00, 35.00
 ),
@@ -85,7 +85,7 @@ INSERT INTO products (name, category, description, price, image_url, is_availabl
     'Vestuário', 
     'Camiseta modelagem oversized em algodão penteado 100% premium, gramatura pesada e estampa minimalista no peito.', 
     159.90, 
-    '/upload/products/camiseta-blue.png', 
+    '/uploads/products/camiseta-blue.png', 
     TRUE, 
     0.350, 25.00, 3.00, 35.00
 );

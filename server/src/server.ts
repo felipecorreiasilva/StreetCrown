@@ -10,8 +10,8 @@ app.use(cors());
 app.use(express.json());
 
 // 2. Servir arquivos estáticos da pasta de uploads
-// Isso mapeia a URL '/upload' para a pasta física local './upload'
-app.use('/upload', express.static(path.join(__dirname, '../upload')));
+// Isso mapeia a URL '/uploads' para a pasta física local './uploads'
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // Registro das rotas da API
 app.use(productRoutes);
