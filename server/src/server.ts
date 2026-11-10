@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import productRoutes from './routes/productRoutes';
+import authRoutes from './routes/authRoutes';
+import userRoutes from './routes/userRoutes';
 
 const app = express();
 
@@ -15,6 +17,8 @@ app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // Registro das rotas da API
 app.use(productRoutes);
+app.use('/auth', authRoutes);       // Rotas de autenticação (/auth/login, /auth/register)
+app.use('/users', userRoutes);     // Rotas de gestão de utilizadores (/users, /users/:id)
 
 // Rota de teste básica
 app.get('/', (req, res) => {
