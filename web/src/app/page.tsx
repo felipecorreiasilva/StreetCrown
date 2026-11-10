@@ -1,7 +1,32 @@
+'use client'
+
+import { productService } from "@/service/productService";
+import { Product } from "@/types/product";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  
+  useEffect(() => {
+    // função para buscar produtos da API
+    async function fetchProducts() {
+      setLoading(true);
+      try {
+        const response = await productService.getAllProducts();
+        setProducts(response);
+      } catch (error) {
+        console.error("Erro ao buscar produtos:", error)
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProducts();
+  }, [])
+
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
       
@@ -62,6 +87,26 @@ export default function Home() {
               Conectando atitude urbana, conforto e autenticidade em cada peça. Prepare-se para elevar o seu estilo ao próximo nível.
             </p>
             {/* Aqui você pode adicionar os cards de produtos da sua loja */}
+            {loading ? (
+              <p className="text-zinc-500">Carregando produtos...</p>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {products.map((product) => (
+                  <div key={product.id} className="bg-zinc-100 p-4 rounded-lg shadow-md">
+                    <img
+                      src={product.image_url}
+                      alt={product.name}
+                      className="w-full h-48 object-cover mb-4"
+                    />
+                    <h3 className="text-xl font-bold mb-2">{product.name}</h3>
+                    <p className="text-zinc-600 mb-4">{product.description}</p>
+                    <p className="text-2xl font-extrabold text-purple-500">
+                      R$ {product.price.toFixed(2)}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
