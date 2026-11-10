@@ -1,4 +1,4 @@
-import { api } from './api';
+import api from './api';
 import { Product } from '@/types/product';
 
 // Tipo auxiliar para dados de criação/atualização (omitindo o ID gerado pelo banco e datas)
